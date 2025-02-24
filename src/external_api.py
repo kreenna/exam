@@ -38,7 +38,7 @@ def get_currency_rates(user_settings_data: str = "user_settings.json") -> list:
     return currency_rates
 
 
-def get_stock_rates(user_settings_data: str = "user_settings.json") -> list:
+def get_stock_prices(user_settings_data: str = "user_settings.json") -> list:
     """
     Принимает на вход опциональный путь до JSON-файла с настройками пользователя.
     Возвращает список словарей со стоимостью каждой из акций из настроек.
@@ -62,7 +62,7 @@ def get_stock_rates(user_settings_data: str = "user_settings.json") -> list:
         stock_price: float = response.json()["Global Quote"]["05. price"]
 
         # создаем словарь для каждой валюты
-        currency_info: dict = {"currency": stock, "rate": stock_price}
+        currency_info: dict = {"stock": stock, "rate": stock_price}
 
         # добавляем словарь в список валют
         stock_prices.append(currency_info)
