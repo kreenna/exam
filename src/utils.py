@@ -42,3 +42,22 @@ def get_transactions_data(path_file: str = "data/operations.xlsx") -> pd.DataFra
     except Exception:
         # при возникновении ошибки, возвращаем пустой список.
         raise
+
+
+def get_formated_transactions(transactions: pd.DataFrame) -> list:
+
+    formatted_transactions: list = []
+
+    for _, row in transactions.iterrows():
+        positive_amount: str = str(row["Сумма операции"]).replace("-", " ")
+        transaction_data: dict = {
+            "date": row["Дата платежа"],
+            "last_digits": row["Номер карты"],
+            "amount": positive_amount,
+            "currency": row["Валюта платежа"],
+            "category": row["Категория"],
+            "description": row["Описание"],
+        }
+        formatted_transactions.append(transaction_data)
+
+    return formatted_transactions
