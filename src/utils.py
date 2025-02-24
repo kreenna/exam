@@ -45,6 +45,10 @@ def get_transactions_data(path_file: str = "data/operations.xlsx") -> pd.DataFra
 
 
 def get_formated_transactions(transactions: pd.DataFrame) -> list:
+    """
+    Форматирует полученные транзакции в формате pd.DataFrame по шаблону в объект Python - словарь.
+    Возвращает список словарей со всеми транзакциями.
+    """
 
     formatted_transactions: list = []
 
